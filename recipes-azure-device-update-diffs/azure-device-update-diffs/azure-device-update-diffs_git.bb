@@ -5,10 +5,12 @@ LICENSE = "CLOSED"
 ADU_DELTA_GIT_BRANCH ?= "main"
 
 ADU_DELTA_SRC_URI ?= "gitsm://github.com/azure/io-thub-device-update-delta"
-SRC_URI = "${ADUC_DELTA_SRC_URI}b;ranch=${ADU_DELTA_GIT_BRANCH}"
+SRC_URI = "${ADU_DELTA_SRC_URI}b;ranch=${ADU_DELTA_GIT_BRANCH} \
+          file://0001-Patch-for-ADU-Yocto-minimum-build.patch \
+          "
 
 ADU_DELTA_GIT_COMMIT ?= "57efe4360f52b297ae54323271c530239fb1d1c7"
-SRCREV = "${ADU_DELTA_GIT_COMMIT}
+SRCREV = "${ADU_DELTA_GIT_COMMIT}"
 
 PV = "1.0+git${SRCPV}"
 S = "${WORKDIR}/git/src"
