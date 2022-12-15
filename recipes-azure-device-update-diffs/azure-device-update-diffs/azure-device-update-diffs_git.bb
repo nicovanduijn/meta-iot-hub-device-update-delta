@@ -5,15 +5,19 @@ LICENSE = "CLOSED"
 ADU_DELTA_GIT_BRANCH ?= "main"
 
 ADU_DELTA_SRC_URI ?= "gitsm://github.com/azure/io-thub-device-update-delta"
-SRC_URI = "${ADU_DELTA_SRC_URI}b;ranch=${ADU_DELTA_GIT_BRANCH} \
-          file://0001-Patch-for-ADU-Yocto-minimum-build.patch \
+SRC_URI = "${ADU_DELTA_SRC_URI};branch=${ADU_DELTA_GIT_BRANCH} \
+          file://0001-ADU-v1.0.0-Yocto-mininum-build.patch \
+          file://0002-Add-root-CMakeLists.txt.patch \
+          file://0003-Fix-io_utility-CMakeLists.txt.patch \
+          file://0004-Add-missing-header-in-zstd_decompression_reader.patch \
           "
 
-ADU_DELTA_GIT_COMMIT ?= "57efe4360f52b297ae54323271c530239fb1d1c7"
+ADU_DELTA_GIT_COMMIT ?= "b581e92458f458969b427051a2ac5d18d3528dc6"
+
 SRCREV = "${ADU_DELTA_GIT_COMMIT}"
 
 PV = "1.0+git${SRCPV}"
-S = "${WORKDIR}/git/src"
+S = "${WORKDIR}/git"
 
 DEPENDS = " ms-gsl bsdiff libgcrypt libgpg-error zlib zstd e2fsprogs"
 RDEPENDS:${PN} += "bsdiff"
